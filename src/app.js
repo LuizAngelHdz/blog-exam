@@ -131,5 +131,12 @@ app.delete("/blogs/:id", function (req, res) {
 
 // Iniciamos el servidor en el puerto 3000
 app.listen(3008, function () {
-  console.log("Servidor iniciado en el puerto 3008");
+  console.log(
+    "Servidor iniciado en el puerto 3008",
+    DB_HOST,
+    DB_USER,
+    DB_PASSWORD,
+    DB_NAME,
+    DB_PORT
+  );
 });
