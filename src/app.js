@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var mysql = require("mysql");
 var cors = require("cors");
+var mysql = require("mysql2-promise")();
 
 var app = express();
 app.use(cors());
@@ -14,7 +14,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD || "";
 const DB_NAME = process.env.DB_NAME || "blogexam";
 const DB_PORT = process.env.DB_PORT || 3306;
 
-var connection = mysql.createConnection({
+var connection = mysql.configure({
   host: DB_HOST, // si la base de datos esta en un server diferente seria la direccion o IP en la que se encuentra
   user: DB_USER, // usuario de la base de datos
   password: DB_PASSWORD, // contraseña de la base de datos
