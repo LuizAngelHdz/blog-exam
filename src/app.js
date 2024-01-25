@@ -8,11 +8,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+import { DB_PORT, DB_HOST, DB_USER, DB_NAME, DB_PASSWORD } from "./config";
+
 var connection = mysql.createConnection({
-  host: "127.0.0.3", // si la base de datos esta en un server diferente seria la direccion o IP en la que se encuentra
-  user: "root", // usuario de la base de datos
-  password: "", // contraseña de la base de datos
-  database: "blogexam", // nombre de la base de datos
+  host: DB_HOST, // si la base de datos esta en un server diferente seria la direccion o IP en la que se encuentra
+  user: DB_USER, // usuario de la base de datos
+  password: DB_PASSWORD, // contraseña de la base de datos
+  database: DB_NAME, // nombre de la base de datos
+  port: DB_PORT,
 });
 
 connection.connect(function (error) {
