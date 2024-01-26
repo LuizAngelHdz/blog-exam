@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
-var mysql = require("mysql2-promise")();
+var mysql = require("mysql2");
 
 var app = express();
 app.use(cors());
@@ -14,7 +14,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD || "";
 const DB_NAME = process.env.DB_NAME || "blogexam";
 const DB_PORT = process.env.DB_PORT || 3306;
 
-var connection = mysql.configure({
+var connection = mysql.createPool({
   host: DB_HOST, // si la base de datos esta en un server diferente seria la direccion o IP en la que se encuentra
   user: DB_USER, // usuario de la base de datos
   password: DB_PASSWORD, // contraseña de la base de datos
@@ -22,13 +22,13 @@ var connection = mysql.configure({
   port: DB_PORT,
 });
 
-connection.connect(function (error) {
-  if (error) {
-    console.log(error); // Si hay un error al conectarse a la base de datos, lo mostramos en la consola
-  } else {
-    console.log("Conexion correcta a la base de datos"); // Si no hay errores, mostramos un mensaje de que la conexion fue correcta
-  }
-});
+// connection.connect(function (error) {
+//   if (error) {
+//     console.log(error); // Si hay un error al conectarse a la base de datos, lo mostramos en la consola
+//   } else {
+//     console.log("Conexion correcta a la base de datos"); // Si no hay errores, mostramos un mensaje de que la conexion fue correcta
+//   }
+// });
 
 app.get("/blogs", function (req, res) {
   // Consultamos todos los blogs de la base de datos
