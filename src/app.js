@@ -128,6 +128,6 @@ app.delete("/blogs/:id", function (req, res) {
   console.log("Servidor iniciado en el puerto 3008");
 });` is starting the server and listening for incoming requests on port 3008. Once the server is
 started, it will log the message "Servidor iniciado en el puerto 3008" to the console. */
-app.listen(3008, function () {
-  console.log("Servidor iniciado en el puerto 3008");
+app.listen(3000, function () {
+  console.log("Servidor iniciado en el puerto 3000");
 });
